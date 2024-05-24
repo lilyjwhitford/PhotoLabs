@@ -1,15 +1,18 @@
 import React from "react";
 
 import "../styles/PhotoListItem.scss";
+import PhotoFavButton from "./PhotoFavButton";
 
 
 const PhotoListItem = ({ photo }) => {
-  if (!photo) {
-    return null;
-  }
+
+  const handleLikeChange = (isLiked) => {
+    console.log(`photo liked status: ${isLiked}`);
+  };
   
   return (
     <div className="photo-list__item">
+      <PhotoFavButton onClick={handleLikeChange} />
       <img className="photo-list__image" src={photo.imageSource} alt={photo.username} />
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={photo.profile} alt={`Profile of ${photo.username}`}/>
