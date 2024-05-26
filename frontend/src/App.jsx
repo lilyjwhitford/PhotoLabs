@@ -1,14 +1,15 @@
 import React from 'react';
 
 import './App.scss';
-import PhotoList from 'components/PhotoList';
-import { sampleDataForPhotoList } from 'components/PhotoList';
+import PhotoList, { sampleDataForPhotoList } from 'components/PhotoList';
+import TopicList, { sampleDataForTopicList } from 'components/TopicList';
 
 
 const App = () => {
   return (
     <div className="App">
       <PhotoList photos={sampleDataForPhotoList} />
+      <TopicList topics={sampleDataForTopicList} />
     </div>
   );
 };
