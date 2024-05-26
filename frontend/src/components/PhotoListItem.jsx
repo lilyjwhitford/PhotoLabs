@@ -6,6 +6,8 @@ import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = ({ photo }) => {
 
+  console.log(photo);
+  
   const handleLikeChange = (isLiked) => {
     console.log(`photo liked status: ${isLiked}`);
   };
