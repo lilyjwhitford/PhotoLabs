@@ -4,17 +4,15 @@ import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
 
-const PhotoListItem = ({ photo }) => {
-
-  console.log(photo);
-  
-  const handleLikeChange = (isLiked) => {
-    console.log(`photo liked status: ${isLiked}`);
-  };
+const PhotoListItem = ({ photo, onToggleFavourite }) => {
+  // console.log(photo);
+  // const handleLikeChange = (isLiked) => {
+  //   console.log(`photo liked status: ${isLiked}`);
+  // };
   
   return (
     <div className="photo-list__item">
-      <PhotoFavButton onClick={handleLikeChange} />
+      <PhotoFavButton photoId={photo.id} onClick={() => onToggleFavourite(photo.id)} />
       <img className="photo-list__image" src={photo.imageSource} alt={photo.username} />
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={photo.profile} alt={`Profile of ${photo.username}`}/>
