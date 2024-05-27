@@ -4,7 +4,7 @@ import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
 
-const PhotoListItem = ({ photo, onToggleFavourite, favourties }) => {
+const PhotoListItem = ({ photo, onToggleFavourite, favourties, onClick }) => {
   // console.log(photo);
   // const handleLikeChange = (isLiked) => {
   //   console.log(`photo liked status: ${isLiked}`);
@@ -20,6 +20,9 @@ const PhotoListItem = ({ photo, onToggleFavourite, favourties }) => {
           <p>{photo.username}</p>
           <p className="photo-list__user-location">{photo.location.city}, {photo.location.country}</p>
         </div>
+      </div>
+      <div onClick={() => onClick(photo.id)}>
+        {/* define photos */}
       </div>
     </div>
   );
