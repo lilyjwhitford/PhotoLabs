@@ -5,7 +5,7 @@ import PhotoListItem from "./PhotoListItem";
 import PhotoFavButton from "./PhotoFavButton";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
 
-const PhotoList = ({ photos, favourites, onToggleFavourite, setDisplayModal }) => {
+const PhotoList = ({ photos, favourites, onToggleFavourite, setDisplayModal, onOpenModal }) => {
 
   // const openModal = (photoId) => {
   //   setDisplayModal(true); // set to true to open modal
@@ -19,7 +19,7 @@ const PhotoList = ({ photos, favourites, onToggleFavourite, setDisplayModal }) =
           photo={photo}
           onToggleFavourite={onToggleFavourite}
           favourites={favourites}
-          setDisplayModal={setDisplayModal}
+          onOpenModal={onOpenModal}
         />
       ))}
     </ul>

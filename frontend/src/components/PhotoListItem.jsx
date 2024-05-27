@@ -4,7 +4,7 @@ import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
 
-const PhotoListItem = ({ photo, onToggleFavourite, favourties, setDisplayModal }) => {
+const PhotoListItem = ({ photo, onToggleFavourite, favourties, setDisplayModal, onOpenModal }) => {
   // console.log(photo);
   // const handleLikeChange = (isLiked) => {
   //   console.log(`photo liked status: ${isLiked}`);
@@ -13,7 +13,7 @@ const PhotoListItem = ({ photo, onToggleFavourite, favourties, setDisplayModal }
   const handleClick = () => {
     console.log("opening modal for photo:", photo.id);
     console.log("photo details:", photo);
-    setDisplayModal(true);
+    onOpenModal(photo); // pass in photo details
   };
   
   return (

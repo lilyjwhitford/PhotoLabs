@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import '../styles/PhotoDetailsModal.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
 
-const PhotoDetailsModal = ({ isModalOpen, onClose, photoId }) => {
+const PhotoDetailsModal = ({ isModalOpen, onClose, photoId, photo }) => {
+  console.log("selected photo:", photo);
   // const [isOpen, setIsOpen] = useState(false);
 
   // //function to open the modal
