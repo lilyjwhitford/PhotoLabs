@@ -5,7 +5,7 @@ import PhotoList from 'components/PhotoList';
 import '../styles/HomeRoute.scss';
 import TopNavigation from 'components/TopNavigationBar';
 
-const HomeRoute = ({ photos, topics }) => {
+const HomeRoute = ({ photos, topics, setDisplayModal }) => {
 
   // initialize state with empty array to stack favourited photos
   const [favourites, setFavourites] = useState([]);
@@ -24,6 +24,7 @@ const HomeRoute = ({ photos, topics }) => {
         photos={photos}
         favourites={favourites}
         onToggleFavourite={toggleFavourite}
+        setDisplayModal={setDisplayModal}
       />
     </div>
   );
