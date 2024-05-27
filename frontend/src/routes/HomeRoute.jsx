@@ -1,30 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import TopNavigation from 'components/TopNavigationBar';
+// import TopNavigation from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 import '../styles/HomeRoute.scss';
+import TopNavigation from 'components/TopNavigationBar';
 
 const HomeRoute = ({ photos, topics }) => {
 
   // initialize state with empty array to stack favourited photos
   const [favourites, setFavourites] = useState([]);
 
-  // function to toggle favourite status
   const toggleFavourite = (photoId) => {
-    // remove from favourites if photo id is present
-    if (favourites.includes(photoId)) {
-      setFavourites(favourites.filter(id => id !== photoId));
-    } else {
-      // add to favourites if not
-      setFavourites([...favourites, photoId]);
-    }
-    console.log('Updated favourites:', favourites);
-
+    const newFavourites = favourites.includes(photoId)
+      ? favourites.filter(id => id !== photoId)
+      : [...favourites, photoId];
+    setFavourites(newFavourites);
   };
 
   return (
     <div className="home-route">
-      <TopNavigation topics={topics} />
+      <TopNavigation topics={topics} favourites={favourites} />
       <PhotoList
         photos={photos}
         favourites={favourites}
