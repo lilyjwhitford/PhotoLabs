@@ -9,6 +9,12 @@ const PhotoListItem = ({ photo, onToggleFavourite, favourties, setDisplayModal }
   // const handleLikeChange = (isLiked) => {
   //   console.log(`photo liked status: ${isLiked}`);
   // };
+
+  const handleClick = () => {
+    console.log("opening modal for photo:", photo.id);
+    console.log("photo details:", photo);
+    setDisplayModal(true);
+  };
   
   return (
     <div className="photo-list__item">
@@ -17,7 +23,10 @@ const PhotoListItem = ({ photo, onToggleFavourite, favourties, setDisplayModal }
         onClick={() => onToggleFavourite(photo.id)}
         favourites={favourties}
       />
-      <img className="photo-list__image" src={photo.imageSource} alt={photo.username} onClick={() => setDisplayModal(true)}/>
+      <img className="photo-list__image"
+        src={photo.imageSource}
+        alt={photo.username}
+        onClick={handleClick}/>
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={photo.profile} alt={`Profile of ${photo.username}`}/>
         <div className="photo-list__user-info">
