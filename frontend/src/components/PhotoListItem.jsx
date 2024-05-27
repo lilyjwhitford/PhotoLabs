@@ -12,7 +12,11 @@ const PhotoListItem = ({ photo, onToggleFavourite, favourties, setDisplayModal }
   
   return (
     <div className="photo-list__item">
-      <PhotoFavButton photoId={photo.id} onClick={() => onToggleFavourite(photo.id)} />
+      <PhotoFavButton
+        photoId={photo.id}
+        onClick={() => onToggleFavourite(photo.id)}
+        favourites={favourties}
+      />
       <img className="photo-list__image" src={photo.imageSource} alt={photo.username} onClick={() => setDisplayModal(true)}/>
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={photo.profile} alt={`Profile of ${photo.username}`}/>
