@@ -9,12 +9,19 @@ const PhotoDetailsModal = ({ isModalOpen, onClose, photo , onToggleFavourite, fa
   const [similarPhotos, setSimilarPhotos] = useState([]);
 
   const findSimilarPhotos = (selectedPhoto, allPhotos) => {
-    // extract tags of the selected photo
-    const selectedTags = selectedPhoto.tags;
-    // filter allPhotos to find those that share any tag with the selectedPhoto
-    return allPhotos.filter(photo =>
-      photo.tags.some(tag => selectedTags.includes(tag))
-    );
+    if (!selectedPhoto || typeof selectedPhoto !== 'object' || !selectedPhoto.similarPhotos) {
+      console.error('Selected photo is undefined or lacks similarPhotos property');
+      return []; // return an empty array
+    }
+    // // extract tags of the selected photo
+    // const selectedTags = selectedPhoto.tags;
+    // // filter allPhotos to find those that share any tag with the selectedPhoto
+    // return allPhotos.filter(photo =>
+    //   photo.tags.some(tag => selectedTags.includes(tag))
+    // );
+    const similarPhotosObj = selectedPhoto.similarPhotos;
+    const similarPhotosArray = Object.values(similarPhotosObj);
+    return similarPhotosArray;
   };
 
   console.log("selected photo in modal:", selectedPhoto);
@@ -36,7 +43,8 @@ const PhotoDetailsModal = ({ isModalOpen, onClose, photo , onToggleFavourite, fa
           <PhotoFavButton
             photoId={photo.id}
             onClick={() => onToggleFavourite(photo.id)}
-            favourites={favourites}/>
+            favourites={favourites}
+          />
           <img className="photo-details-modal__image" src={photo.imageSource} alt={photo.username}></img>
           <div className="photo-details-modal__photographer-details">
             <img className="photo-details-modal__photographer-profile" src={photo.profile} alt={`Profile of ${photo.username}`}></img>
