@@ -5,12 +5,8 @@ import PhotoListItem from "./PhotoListItem";
 import PhotoFavButton from "./PhotoFavButton";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
 
-const PhotoList = ({ photos, favourites, onToggleFavourite, setDisplayModal, onOpenModal }) => {
+const PhotoList = ({ photos, favourites, onToggleFavourite, onOpenModal }) => {
 
-  // const openModal = (photoId) => {
-  //   setDisplayModal(true); // set to true to open modal
-  // };
-  // console.log(photos);
   return (
     <ul className="photo-list">
       {photos.map(photo => (
