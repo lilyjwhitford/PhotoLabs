@@ -24,7 +24,7 @@ const PhotoDetailsModal = ({ isModalOpen, onClose, photo, onToggleFavourite, fav
     return similarPhotosArray;
   };
 
-  // console.log("selected photo in modal:", selectedPhoto);
+  // console.log("selected photo in modal:", photo);
 
   useEffect(() => {
     const similar = findSimilarPhotos(photo);
@@ -45,11 +45,17 @@ const PhotoDetailsModal = ({ isModalOpen, onClose, photo, onToggleFavourite, fav
             onClick={() => onToggleFavourite(photo.id)}
             favourites={favourites}
           />
-          <img className="photo-details-modal__image" src={photo.imageSource} alt={photo.username}></img>
+          <img className="photo-details-modal__image"
+            src={photo.urls.full}
+            alt={photo.user.username}>
+          </img>
           <div className="photo-details-modal__photographer-details">
-            <img className="photo-details-modal__photographer-profile" src={photo.profile} alt={`Profile of ${photo.username}`}></img>
+            <img className="photo-details-modal__photographer-profile"
+              src={photo.user.profile}
+              alt={`profile of ${photo.user.username}`}>
+            </img>
             <div className="photo-details-modal__photographer-info">
-              <p>{photo.username}</p>
+              <p>{photo.user.name}</p>
               <p className="photo-details-modal__photographer-location">{photo.location.city}, {photo.location.country}</p>
             </div>
           </div>

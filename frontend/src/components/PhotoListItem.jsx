@@ -24,13 +24,16 @@ const PhotoListItem = ({ photo, onToggleFavourite, favourites, setDisplayModal, 
         favourites={favourites}
       />
       <img className="photo-list__image"
-        src={photo.imageSource}
-        alt={photo.username}
+        src={photo.urls.regular}
+        alt={photo.user.username}
         onClick={handleClick}/>
       <div className="photo-list__user-details">
-        <img className="photo-list__user-profile" src={photo.profile} alt={`Profile of ${photo.username}`}/>
+        <img className="photo-list__user-profile"
+          src={photo.user.profile}
+          alt={`Profile of ${photo.user.username}`}
+        />
         <div className="photo-list__user-info">
-          <p>{photo.username}</p>
+          <p>{photo.user.name}</p>
           <p className="photo-list__user-location">{photo.location.city}, {photo.location.country}</p>
         </div>
       </div>

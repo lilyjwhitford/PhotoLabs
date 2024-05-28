@@ -7,7 +7,7 @@ const PhotoFavButton = ({ photoId, onClick, favourites}) =>  {
 
   // const [isLiked, setIsLiked] = useState(false);
   // console.log(favourites);
-  // const isLiked = favourites.includes(photoId);
+  const isLiked = favourites.includes(photoId);
   
   const handleClick = () => {
     // setIsLiked(!isLiked);
@@ -17,7 +17,7 @@ const PhotoFavButton = ({ photoId, onClick, favourites}) =>  {
   return (
     <div className="photo-list__fav-icon" onClick={handleClick}>
       <div className="photo-list__fav-icon-svg">
-        <FavIcon displayAlert={false} selected={false}/>
+        <FavIcon selected={isLiked}/>
       </div>
     </div>
   );
