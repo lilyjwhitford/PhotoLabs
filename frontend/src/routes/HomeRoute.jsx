@@ -5,17 +5,7 @@ import PhotoList from 'components/PhotoList';
 import '../styles/HomeRoute.scss';
 import TopNavigation from 'components/TopNavigationBar';
 
-const HomeRoute = ({ photos, topics, setDisplayModal, onOpenModal }) => {
-
-  // initialize state with empty array to stack favourited photos
-  const [favourites, setFavourites] = useState([]);
-
-  const toggleFavourite = (photoId) => {
-    const newFavourites = favourites.includes(photoId)
-      ? favourites.filter(id => id !== photoId)
-      : [...favourites, photoId];
-    setFavourites(newFavourites);
-  };
+const HomeRoute = ({ photos, topics, onOpenModal, favourites, onToggleFavourite }) => {
 
   return (
     <div className="home-route">
@@ -23,7 +13,7 @@ const HomeRoute = ({ photos, topics, setDisplayModal, onOpenModal }) => {
       <PhotoList
         photos={photos}
         favourites={favourites}
-        onToggleFavourite={toggleFavourite}
+        onToggleFavourite={onToggleFavourite}
         onOpenModal={onOpenModal}
       />
     </div>

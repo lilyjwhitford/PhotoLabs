@@ -5,10 +5,10 @@ import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoFavButton from 'components/PhotoFavButton';
 import PhotoList from 'components/PhotoList';
 
-const PhotoDetailsModal = ({ isModalOpen, onClose, photo , onToggleFavourite, favourites, selectedPhoto }) => {
+const PhotoDetailsModal = ({ isModalOpen, onClose, photo, onToggleFavourite, favourites}) => {
   const [similarPhotos, setSimilarPhotos] = useState([]);
 
-  const findSimilarPhotos = (selectedPhoto, allPhotos) => {
+  const findSimilarPhotos = (selectedPhoto) => {
     if (!selectedPhoto || typeof selectedPhoto !== 'object' || !selectedPhoto.similarPhotos) {
       console.error('Selected photo is undefined or lacks similarPhotos property');
       return []; // return an empty array
@@ -24,12 +24,12 @@ const PhotoDetailsModal = ({ isModalOpen, onClose, photo , onToggleFavourite, fa
     return similarPhotosArray;
   };
 
-  console.log("selected photo in modal:", selectedPhoto);
+  // console.log("selected photo in modal:", selectedPhoto);
 
   useEffect(() => {
-    const similar = findSimilarPhotos(selectedPhoto);
+    const similar = findSimilarPhotos(photo);
     setSimilarPhotos(similar);
-  }, [selectedPhoto]);
+  }, [photo]);
  
 
   // conditionally render the modal content based on its open state
@@ -55,7 +55,7 @@ const PhotoDetailsModal = ({ isModalOpen, onClose, photo , onToggleFavourite, fa
           </div>
           <div className="photo-details-modal__header">Similar Photos</div>
           <div className="photo-list">
-            <PhotoList photos={similarPhotos}/>
+            <PhotoList photos={similarPhotos} favourites={favourites} onToggleFavourite={onToggleFavourite}/>
           </div>
         </article>
       </div>
