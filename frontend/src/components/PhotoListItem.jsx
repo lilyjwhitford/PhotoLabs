@@ -4,7 +4,7 @@ import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
 
-const PhotoListItem = ({ photo, onToggleFavourite, favourites, setDisplayModal, onOpenModal }) => {
+const PhotoListItem = ({ photo, onToggleFavourite, favourites, onOpenModal }) => {
   // console.log(photo);
   // const handleLikeChange = (isLiked) => {
   //   console.log(`photo liked status: ${isLiked}`);
@@ -30,7 +30,7 @@ const PhotoListItem = ({ photo, onToggleFavourite, favourites, setDisplayModal, 
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile"
           src={photo.user.profile}
-          alt={`Profile of ${photo.user.username}`}
+          alt={`profile of ${photo.user.username}`}
         />
         <div className="photo-list__user-info">
           <p>{photo.user.name}</p>
