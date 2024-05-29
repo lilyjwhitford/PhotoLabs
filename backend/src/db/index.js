@@ -1,4 +1,5 @@
 const pg = require("pg");
+console.log(`Connecting to DB at ${process.env.PGHOST}:${process.env.PGPORT}/${process.env.PGDATABASE} as ${process.env.PGUSER}`);
 
 const client = new pg.Client({
   host: process.env.PGHOST,

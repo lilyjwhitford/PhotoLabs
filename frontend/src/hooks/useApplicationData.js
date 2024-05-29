@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import { useReducer, useEffect } from "react";
 
 const initialState = {
   displayModal: false,
@@ -71,6 +71,20 @@ const useApplicationData = () => {
   // const [selectedPhoto, setSelectedPhoto] = useState(null);
   // const [favourites, setFavourites] = useState([]);
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  // create effect to make GET request fetch all photo data from API
+  // then dispatch it to reducer
+  useEffect(() => {
+    fetch("/api/photos")
+      .then(response => response.json())
+      .then(data => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
+      .catch(error => console.error('error fetching photos:', error));
+
+    fetch("/api/topics")
+      .then(response => response.json())
+      .then(data => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }))
+      .catch(error => console.error('error fetching topics:', error));
+  }, []);
 
   const setPhotoSelected = (photo) => {
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: photo });
