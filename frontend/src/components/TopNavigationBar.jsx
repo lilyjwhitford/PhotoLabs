@@ -1,24 +1,18 @@
 import React from 'react';
-import TopicListItem from './TopicListItem';
 
+import TopicList from './TopicList';
 import '../styles/TopNavigationBar.scss';
 import FavBadge from './FavBadge';
 
-const TopNavigation = ({ topics, favourites }) => {
+const TopNavigation = ({ topics, favourites, onTopicClick }) => {
   // check if favourite photo exists
   const isFavPhotoExist = favourites.length > 0;
 
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
-      <div className="top-nav-bar__topic-list">
-        {topics.map(topic => (
-          <li key={topic.id}>
-            <TopicListItem topic={topic} />
-          </li>
-        ))}
-      </div>
-      <FavBadge isFavPhotoExist={isFavPhotoExist}/>
+      <TopicList topics={topics} onTopicClick={onTopicClick} />
+      <FavBadge isFavPhotoExist={isFavPhotoExist} />
     </div>
   );
 };

@@ -15,7 +15,8 @@ export const ACTIONS = {
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
   SELECT_PHOTO: 'SELECT_PHOTO',
   DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS',
-  CLOSE_PHOTO_DETAILS: 'CLOSE_PHOTO_DETAILS'
+  CLOSE_PHOTO_DETAILS: 'CLOSE_PHOTO_DETAILS',
+  GET_PHOTOS_BY_TOPICS: 'GET_PHOTOS_BY_TOPICS'
 };
 
 // disable eslint for errors due to switch case indent syntax
@@ -60,8 +61,13 @@ const reducer = (state, action) => {
         displayModal: false,
         selectedPhoto: null
       };
+    case ACTIONS.GET_PHOTOS_BY_TOPICS:
+      return {
+        ...state,
+        photos: action.payload
+      };
     default:
-      throw new Error(`Tried to reduce with unsupported action type: ${action.type}`);
+      throw new Error(`unsupported action type: ${action.type}`);
   }
 };
 /* eslint-enable */
@@ -88,6 +94,7 @@ const useApplicationData = () => {
 
   const setPhotoSelected = (photo) => {
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: photo });
+    console.log(photo);
   };
 
   const updateToFavPhotoIds = (photoId) => {
@@ -102,12 +109,21 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.CLOSE_PHOTO_DETAILS });
   };
 
+  const getPhotosByTopics = (topicId) => {
+    fetch(`/api/topics/photos/${topicId}`)
+      .then(response => response.json())
+      .then(data => dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: data }))
+      .catch(error => console.error('error fetching photos by topic:', error));
+  };
+
+
   return {
     state,
     actions: {
       setPhotoSelected,
       updateToFavPhotoIds,
-      onClosePhotoDetailsModal
+      onClosePhotoDetailsModal,
+      getPhotosByTopics
     }
   };
 };

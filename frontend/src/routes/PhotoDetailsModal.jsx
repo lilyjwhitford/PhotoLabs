@@ -8,9 +8,14 @@ import PhotoList from 'components/PhotoList';
 const PhotoDetailsModal = ({ isModalOpen, onClose, photo, onToggleFavourite, favourites}) => {
   const [similarPhotos, setSimilarPhotos] = useState([]);
 
+  if (!photo) {
+    console.error("selected photo is undefined");
+    return null;
+  }
+
   const findSimilarPhotos = (selectedPhoto) => {
-    if (!selectedPhoto || typeof selectedPhoto !== 'object' || !selectedPhoto.similarPhotos) {
-      console.error('Selected photo is undefined or lacks similarPhotos property');
+    if (!photo.similar_photos || photo.similar_photos.length === 0) {
+      console.error('selected photo lacks similarPhotos property or is empty');
       return []; // return an empty array
     }
     // // extract tags of the selected photo
@@ -19,7 +24,7 @@ const PhotoDetailsModal = ({ isModalOpen, onClose, photo, onToggleFavourite, fav
     // return allPhotos.filter(photo =>
     //   photo.tags.some(tag => selectedTags.includes(tag))
     // );
-    const similarPhotosObj = selectedPhoto.similarPhotos;
+    const similarPhotosObj = selectedPhoto.similar_photos;
     const similarPhotosArray = Object.values(similarPhotosObj);
     return similarPhotosArray;
   };
