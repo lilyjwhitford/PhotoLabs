@@ -5,7 +5,7 @@ import '../styles/TopNavigationBar.scss';
 import FavBadge from './FavBadge';
 
 const TopNavigation = ({ topics, favourites, onTopicClick }) => {
-  // check if favourite photo exists
+  // check to see if favourite photo exists
   const isFavPhotoExist = favourites.length > 0;
 
   return (

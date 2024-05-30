@@ -8,6 +8,7 @@ const initialState = {
   topics: []
 };
 
+// actions for reducer
 export const ACTIONS = {
   FAV_PHOTO_ADDED: 'FAV_PHOTO_ADDED',
   FAV_PHOTO_REMOVED: 'FAV_PHOTO_REMOVED',
@@ -21,6 +22,8 @@ export const ACTIONS = {
 
 // disable eslint for errors due to switch case indent syntax
 /* eslint-disable */
+
+// reducer function to handle state updates based on actions
 const reducer = (state, action) => {
   switch (action.type) {
     case ACTIONS.FAV_PHOTO_ADDED:
@@ -72,14 +75,11 @@ const reducer = (state, action) => {
 };
 /* eslint-enable */
 
+
 const useApplicationData = () => {
-  // const [displayModal, setDisplayModal] = useState(false);
-  // const [selectedPhoto, setSelectedPhoto] = useState(null);
-  // const [favourites, setFavourites] = useState([]);
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  // create effect to make GET request fetch all photo data from API
-  // then dispatch it to reducer
+  // effect to make GET request fetch all topic/photo data from API then dispatch it to reducer
   useEffect(() => {
     fetch("/api/photos")
       .then(response => response.json())
@@ -92,11 +92,13 @@ const useApplicationData = () => {
       .catch(error => console.error('error fetching topics:', error));
   }, []);
 
+  // function to handle selecting a photo
   const setPhotoSelected = (photo) => {
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: photo });
     console.log(photo);
   };
 
+  // function to toggle favouriting a photo
   const updateToFavPhotoIds = (photoId) => {
     if (state.favourites.includes(photoId)) {
       dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: photoId });
@@ -105,10 +107,12 @@ const useApplicationData = () => {
     }
   };
 
+  // function to close modal
   const onClosePhotoDetailsModal = () => {
     dispatch({ type: ACTIONS.CLOSE_PHOTO_DETAILS });
   };
 
+  // function to fetch photos by topic id and dispatch to reducer
   const getPhotosByTopics = (topicId) => {
     fetch(`/api/topics/photos/${topicId}`)
       .then(response => response.json())

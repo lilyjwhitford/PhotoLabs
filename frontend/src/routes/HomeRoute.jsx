@@ -1,14 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-// import TopNavigation from 'components/TopNavigationBar';
-import PhotoList from 'components/PhotoList';
 import '../styles/HomeRoute.scss';
+import PhotoList from 'components/PhotoList';
 import TopNavigation from 'components/TopNavigationBar';
 
 const HomeRoute = ({ photos, topics, onOpenModal, favourites, onToggleFavourite, onTopicClick }) => {
-  // const handleTopicClick = (topicId) => {
-  //   onGetPhotosByTopics(topicId);
-  // };
 
   return (
     <div className="home-route">

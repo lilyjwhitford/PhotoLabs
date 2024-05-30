@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 
 import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
-import PhotoFavButton from "./PhotoFavButton";
-import PhotoDetailsModal from "routes/PhotoDetailsModal";
 
 const PhotoList = ({ photos, favourites, onToggleFavourite, onOpenModal }) => {
 

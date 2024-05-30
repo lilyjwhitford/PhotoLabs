@@ -1,16 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
 const PhotoFavButton = ({ photoId, onClick, favourites}) =>  {
-
-  // const [isLiked, setIsLiked] = useState(false);
-  // console.log(favourites);
   const isLiked = favourites.includes(photoId);
   
   const handleClick = () => {
-    // setIsLiked(!isLiked);
     onClick(photoId); // directly call the onClick handler with photoId
   };
   

@@ -5,14 +5,7 @@ import PhotoFavButton from "./PhotoFavButton";
 
 
 const PhotoListItem = ({ photo, onToggleFavourite, favourites, onOpenModal }) => {
-  // console.log(photo);
-  // const handleLikeChange = (isLiked) => {
-  //   console.log(`photo liked status: ${isLiked}`);
-  // };
-
   const handleClick = () => {
-    // console.log("opening modal for photo:", photo.id);
-    // console.log("photo details:", photo);
     onOpenModal(photo); // pass in photo details
   };
   
