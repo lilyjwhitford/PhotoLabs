@@ -5,13 +5,11 @@ import TopicListItem from "./TopicListItem";
 
 const TopicList = ({ topics, onTopicClick }) => {
   return (
-    <ul className="top-nav-bar__topic-list">
+    <div className="top-nav-bar__topic-list">
       {topics.map(topic => (
-        <li key={topic.id} onClick={() => onTopicClick}>
-          <TopicListItem topic={topic} />
-        </li>
+        <TopicListItem key={topic.id} topic={topic} onTopicClick={onTopicClick} />
       ))}
-    </ul>
+    </div >
   );
 };
 
